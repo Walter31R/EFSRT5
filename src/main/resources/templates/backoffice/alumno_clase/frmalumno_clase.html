@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/alumno_clase/frmalumno_clase.js}" type="text/javascript"></script>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger" style = "text-align: center">
+        Mantenimiento de Registro de Bailarines
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-dark">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblalumno_clase" class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre del Alumno</th>
+                <th scope="col">Nombre de la Clase</th>
+                <th scope="col">Fecha de Registro</th>
+                <th scope="col">Activo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="alumno_clase : ${listaleq}">
+                <td th:text="${alumno_clase.id_alumno_clase}"></td>
+                <td th:text="${alumno_clase.alumno.nombre}"></td>
+                <td th:text="${alumno_clase.clase.nombre_clase}"></td>
+                <td th:text="${alumno_clase.fecha_registro}"></td>
+                <td th:text="${alumno_clase.activo}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-aleqcod="${alumno_clase.id_alumno_clase}"
+                            th:data-aleqa="${alumno_clase.alumno.id}"
+                            th:data-aleqe="${alumno_clase.clase.id}"
+                            th:data-aleqfch="${alumno_clase.fecha_registro}"
+                            th:data-aleqact="${alumno_clase.activo}">Actualizar</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btneliminar"
+                            th:data-registro-id="${alumno_clase.id_alumno_clase}">Eliminar
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal registro y actualización de Alumno-->
+<div class="modal fade" id="modalbailarines" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Clases</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="cboalumno" class="form-label">Seleccione alumno.</label>
+                    <select id="cboalumno" class="form-select"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="cboclase" class="form-label">Seleccione la clase.</label>
+                    <select id="cboclase" class="form-select"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="txtfchreg">Ingrese la fecha de registro.</label>
+                    <input type="date" class="form-control" id="txtfchreg">
+                </div>
+                <div class="form-check form-switch" id="switchactivo">
+                    <input class="form-check-input" type="checkbox" role="switch" id="cbactivo">
+                    <label class="form-check-label" for="cbactivo">Activo</label>
+                </div>
+                <input type="hidden" id="hddaleq" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

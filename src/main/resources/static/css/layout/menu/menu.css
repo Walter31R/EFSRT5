@@ -1,0 +1,67 @@
+/* Estilos para el menú principal */
+nav.navbar-expand-lg {
+  background-color: #9C27B0 !important; /* Color de fondo del menú */
+}
+
+nav .navbar-nav .nav-link {
+  padding: 10px 15px; /* Ajuste de padding para los enlaces */
+  color: #333; /* Color del texto de los enlaces */
+  text-decoration: none; /* Elimina la decoración por defecto de los enlaces */
+}
+
+nav .navbar-nav .nav-link:hover {
+  background-color: #E0E0E0; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilos para los elementos del menú */
+.menu-item {
+  display: flex; /* Permite que el texto y la imagen se acomoden en fila */
+  flex-direction: column; /* Alinea los elementos en vertical */
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding: 5px; /* Agrega padding al contenedor */
+  border: 1px solid #CCC; /* Borde para el rectángulo */
+  border-radius: 5px; /* Redondea las esquinas del rectángulo */
+  width: 160px; /* Ancho del rectángulo */
+  margin: 5px; /* Margen entre los elementos del menú */
+}
+
+.menu-item-text {
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 5px; /* Margen entre el texto y la imagen */
+  text-align: center;
+  color: black;
+}
+
+.menu-item-icon {
+  width: 24px; /* Ancho del ícono o imagen */
+  height: 24px; /* Altura del ícono o imagen */
+}
+
+.navbar-brand {
+  padding-left: 2px; /* Adjust padding as needed */
+  padding-right: 40px; /* Adjust padding as needed */
+  color: #fff; /* Text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow */
+  display: flex; /* Allow flexbox layout */
+  align-items: center; /* Vertically center the content */
+}
+
+.navbar-brand img {
+  margin-right: 10px; /* Add space between image and text */
+}
+
+.navbar-brand h3 {
+  font-family: "Cursive"; /* Add space between image and text */
+}
+
+.stadium-nav {
+  border-bottom: 2px solid #fff; /* Darker green border at the bottom */
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.stadium-nav .navbar-nav .nav-link:hover {
+  background-color: #FFFFFF; /* Darker green background on hover */
+}

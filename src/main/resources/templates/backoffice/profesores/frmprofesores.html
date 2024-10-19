@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/profesores/frmprofesores.js}" type="text/javascript"></script>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger" style = "text-align: center">
+        Mantenimiento de Profesores
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-success">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblprofesor" class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Especialización</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="profesor : ${listaprofesores}">
+                <td th:text="${profesor.id}"></td>
+                <td th:text="${profesor.dni}"></td>
+                <td th:text="${profesor.nombre}"></td>
+                <td th:text="${profesor.apellido}"></td>
+                <td th:text="${profesor.telefono}"></td>
+                <td th:text="${profesor.correo_electronico}"></td>
+                <td th:text="${profesor.especializacion}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-procod="${profesor.id}"
+                            th:data-prodni="${profesor.dni}"
+                            th:data-proname="${profesor.nombre}"
+                            th:data-prolast="${profesor.apellido}"
+                            th:data-protel="${profesor.telefono}"
+                            th:data-procor="${profesor.correo_electronico}"
+                            th:data-proesp="${profesor.especializacion}">Actualizar</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btneliminar"
+                            th:data-registro-id="${profesor.id}">Eliminar
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal registro y actualización de Alumno-->
+<div class="modal fade" id="modalprofesores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Profesor</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtdnipro"
+                           placeholder="name@example.com">
+                    <label for="txtdnipro">Ingrese dni del profesor.</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnompro"
+                           placeholder="name@example.com">
+                    <label for="txtnompro">Ingrese nombre del profesor.</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtapepro"
+                           placeholder="name@example.com">
+                    <label for="txtapepro">Ingrese apellido del profesor.</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txttelpro"
+                           placeholder="name@example.com">
+                    <label for="txttelpro">Ingrese el teléfono del profesor.</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtcorpro"
+                           placeholder="name@example.com">
+                    <label for="txtcorpro">Ingrese el correo del profesor</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtesppro"
+                           placeholder="name@example.com">
+                    <label for="txtesppro">Ingrese la especialización del profesor</label>
+                </div>
+                <input type="hidden" id="hddprocod" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

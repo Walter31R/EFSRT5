@@ -1,0 +1,90 @@
+    body {
+            display: flex;
+            flex-direction: column;
+            height: 700px;
+            min-height: 100%;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('/img/fondo.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Or adjust as needed */
+            background-position: center; /* Or adjust as needed */
+            background-repeat: no-repeat; /* Or adjust as needed */
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+            text-align: center;
+        }
+        .content img{
+            max-width: 100%;
+            height: 300px;
+            margin: 10px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /* Other header styles... */
+        }
+
+        .nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 100; /* Adjust as needed */
+        }
+
+        .slider-container {
+          position: relative;
+          width: 800px; /* Adjust as needed */
+          margin: 0 auto;
+        }
+
+        .image-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); /* Adjust vertical centering if needed */
+            width: 50%;
+            text-align: center; /* Center text horizontally */
+        }
+
+        .image-text.left {
+            left: 0;
+            text-align: center;
+            width: 22.5%;
+            font: oblique bold 120% cursive;
+            font-size: 15 px;
+        }
+
+        .image-text.right {
+            right: 0;
+            text-align: center;
+            width: 22.5%;
+            font: oblique bold 120% cursive;
+            font-size: 15 px;
+        }
+
+        .image-container {
+          display: flex;
+          overflow: hidden; /* Hide overflowing images */
+          justify-content: center; /* Center horizontally */
+        }
+
+        .image-container img {
+          width: 50%; /* Adjust image width as needed */
+          transition: transform 0.5s ease; /* Smooth transition for image rotation */
+        }

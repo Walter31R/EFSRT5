@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/clases/frmclases.js}" type="text/javascript"></script>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger" style = "text-align: center">
+        Mantenimiento de Clases
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-info">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblclase" class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Clase</th>
+                <th scope="col">Profesor</th>
+                <th scope="col">Max Alumnos</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="clase : ${listclases}">
+                <td th:text="${clase.id}"></td>
+                <td th:text="${clase.nombre_clase}"></td>
+                <td th:text="${clase.entrenador.nombre + ' ' + clase.entrenador.apellido}"></td>
+                <td th:text="${clase.nromaximo}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-equicod="${clase.id}"
+                            th:data-equinom="${clase.nombre_clase}"
+                            th:data-equient="${clase.entrenador.id}"
+                            th:data-equimax="${clase.nromaximo}">Actualizar</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btneliminar"
+                            th:data-registro-id="${clase.id}">Eliminar
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal registro y actualización de Alumno-->
+<div class="modal fade" id="modalclases" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Clases</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="txtnomclase">Ingrese nombre de la clase.</label>
+                    <input type="text" class="form-control" id="txtnomclase"
+                           placeholder="Ingrese nombre de la clase.">
+                </div>
+                <div class="mb-3">
+                    <label for="cboentrenador" class="form-label">Seleccione Profesor.</label>
+                    <select id="cboentrenador" class="form-select"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="txtmaxequi">Ingrese el máximo de alumnos.</label>
+                    <input type="text" class="form-control" id="txtmaxequi"
+                           placeholder="Ingrese maximo de alumnos.">
+                </div>
+                <input type="hidden" id="hddequicod" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
